@@ -123,7 +123,7 @@
 				window.onscroll = function() {
 					if (getClient().height + getScrollTop() >= items[items.length - 1].offsetTop) {
 						var j =0;
-						while(j<15&&i<datas.length){
+						while(j<10&&i<datas.length){
 							var div = document.createElement("div");
 							div.className = "item";
 							div.innerHTML = '<a href='+datas[i]+'><img src="' + datas[i] + '" alt=""></a>';
