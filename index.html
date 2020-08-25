@@ -29,6 +29,7 @@
     </head>
     <body>
 	<div id="main">
+	<div id="t">请等待....</div>
         <div class="container" id="box" hidden>
             <div class="item"><a href='/img/0.jpg'><img src="/img/0.jpg"></a></div>
             <div class="item"><a href='/img/1.jpg'><img src="/img/1.jpg"></a></div>
@@ -69,6 +70,8 @@
 				var box = document.getElementById('box');
 				var items = box.children;//得到子元素集合
 				box.hidden = false;
+				var t = document.getElementById('t');
+				t.hidden = true;
 				waterFall();
 
 				//对num张照片进行瀑布流布局
