@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #isPc {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 10000px;
+            height: 10000px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    
+    <main>
+        <div id="isPc" hidden>
+            <h1>请使用手机浏览器访问</h1>
+        </div>
+
+        <div id="start">
+
+        </div>
+    </main>
+    <script>
+        var s = `一帽征尘，留君不住从君去。片帆何处，南浦沈香雨。
+回首风流，紫竹村边住。孤鸿语，三生定许，可是梁鸿侣？`;
+        var index = 0;
+        var length = s.length;
+        var tId = null;
+
+        function dzg(){
+            start.innerHTML = ""
+
+        tId=setInterval(function(){
+            start.append(s.charAt(index));
+            if(index++ === length){
+            clearInterval(tId);
+            // index = 0;
+            // dzg()
+            }
+        },200);
+        }
+
+        
+    </script>
+    <script>
+        function IsPC() {
+                // 判断pc平台
+            var userAgentInfo = navigator.userAgent;
+            var Agents = ["Android", "iPhone",
+                        "SymbianOS", "Windows Phone",
+                        "iPad", "iPod"];
+            var flag = true;
+            for (var v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
+
+    
+    var start = document.getElementById("start");
+    var isPc = document.getElementById("isPc");
+    if (IsPC()){
+        isPc.hidden = false
+    }else{
+        dzg();
+    }
+    </script>
+
+
+</body>
+</html>
