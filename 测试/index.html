@@ -3,27 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title></title>
     <style>
-        #isPc {
+        html {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            
+            background-repeat: no-repeat;
+            background-size: 100%;
+            /* background-position: center; */
+            /* filter: blur(9px); */
+        }
+		.main h1 {
+			text-align: center;
+            margin-top: 60px;
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.5);
+		}
+
+
+        #start {
+            width: 85%;
+            margin: auto;
+            margin-top: 80px;
+            font-size: 20px;
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .timer {
             position: fixed;
+            bottom: 4vh;
+            right: 2vw;
+        }
+
+        #img {
+            width: 45%;
+            height: 40px;
+            background-color: aquamarine;
+            box-shadow: 3px 4px 15px #6cf;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+            margin: auto;
+            position:absolute;
             top: 0;
             left: 0;
-            width: 10000px;
-            height: 10000px;
-            background-color: aqua;
+            right: 0;
+            bottom: 0;
+            margin-top: 74vh;
+            border-radius: 20px;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        #img:active {
+            box-shadow: 3px 4px 15px #6cf inset;
+            text-shadow: 0px 0px 3px rgba(0, 0, 0, .5);
+            line-height: 43px;
+        }
+
+
+
+        #box {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background-color: lawngreen;
+            margin: auto;
+            width: 320px;
+            height: 520px;
+            border-radius: 30px;
         }
     </style>
 </head>
 <body>
-    
     <main>
         <div id="isPc" hidden>
             <h1>请使用手机浏览器访问</h1>
+			<img src="a.jpg" />
         </div>
 
-        <div id="start">
-
+        <div class="main" id="main">
+			<h1>H1标题测试</h1>
+			<div id="con">
+                <div id="start"></div>
+                <div onclick="alert_box()" id="img">
+                    点我
+                </div>
+            </div>
+            <div class="timer">距离网页消亡倒计时
+                <span id="timer"></span>
+            </div>
+        </div>
+        
+        <div  id="box" hidden>
+            <div class="down" onclick="down()">关闭</div>
         </div>
     </main>
     <script>
@@ -36,17 +111,48 @@
         function dzg(){
             start.innerHTML = ""
 
-        tId=setInterval(function(){
-            start.append(s.charAt(index));
-            if(index++ === length){
-            clearInterval(tId);
-            // index = 0;
-            // dzg()
-            }
-        },200);
+            tId=setInterval(function(){
+                start.append(s.charAt(index));
+                if(index++ === length){
+                clearInterval(tId);
+                // index = 0;
+                // dzg()
+                }
+            },160);
         }
 
         
+
+        var startTime=Math.round(new Date().getTime()/1000);//开始时间, 当前时间
+        // var startTime=1606233590;//开始时间, 当前时间
+        var endTime=1606233600; //结束时间
+        var t = setInterval(function(){
+            var ts =endTime-startTime;//计算剩余的毫秒数
+            // console.log(ts);
+            var dd = parseInt(ts  / 60 / 60 / 24, 10);//计算剩余的天数
+            var hh = parseInt(ts  / 60 / 60 % 24, 10);//计算剩余的小时数
+            var mm = parseInt(ts  / 60 % 60, 10);//计算剩余的分钟数
+            var ss = parseInt(ts  % 60, 10);//计算剩余的秒数
+            dd = checkTime(dd);
+            hh = checkTime(hh);
+            mm = checkTime(mm);
+            ss = checkTime(ss);
+            if(ts>0){
+                document.getElementById("timer").innerHTML = dd + "天" + hh + "时" + mm + "分" + ss + "秒";
+                startTime++;
+            }else if(ts<=0){
+                document.getElementById("timer").innerHTML="00:00:00";
+                // location.reload();
+                clearInterval(t)
+                document.body.innerHTML = `<h1>访问超时</h1>`
+            }
+        },1000);
+        function checkTime(i){
+            if (i <=10) {
+                i = "0" + i;
+            }
+            return i;
+        }
     </script>
     <script>
         function IsPC() {
@@ -67,14 +173,30 @@
 
     
     var start = document.getElementById("start");
+    var main = document.getElementById("main");
     var isPc = document.getElementById("isPc");
     if (IsPC()){
+        document.title = '非手机访问'
         isPc.hidden = false
+        main.hidden = true
     }else{
+        document.title = "TEST"
+        main.hidden = false
+        document.body.style.backgroundImage = "url('bg.jpg')"
+        document.body.style.borderColor = "#6cf;"
         dzg();
     }
     </script>
+    <script>
+        var box = document.getElementById("box")
+        function alert_box(){
+            box.hidden = false
+        }
 
+        function down(){
+            box.hidden = true
+        }
+    </script>
 
 </body>
 </html>
