@@ -1,114 +1,27 @@
-<!DOCTYPE html><html lang="en" class="ws-ready"><head><meta http-equiv="Content-type" content="text/html; charset=utf-8"><!-- <meta name="theme-color" content="#3498db" /> --><meta name="viewport" content="width=device-width,initial-scale=1"><title>slide</title><meta property="og:title" content="slide"><meta property="og:type" content="article"><link href="/vendor.e40d4d928a997a8a9594.css" rel="stylesheet"><link href="/main.381335e89c4e69029d68.css" rel="stylesheet"><style>// extracted by mini-css-extract-plugin
-export {};</style><style>// extracted by mini-css-extract-plugin
-export {};</style><style>// extracted by mini-css-extract-plugin
-export {};</style><link rel="prefetch" as="script" href="/999.aa1a74b490a1cf38f5bf.bundle.js"><link rel="prefetch" as="script" href="/769.ea95e3e6fd289316df17.bundle.js"><style type="text/css">body.baseline {
-                  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYAgMAAACdGdVrAAAACVBMVEUAAAAtXsUtXcPDDPUWAAAAA3RSTlMAZmHzZFkxAAAAFklEQVQI12MAA9bBR3ExhAJB1iooBQBGwgVEs/QtuAAAAABJRU5ErkJggg==) left top .8rem/.8rem;
-                }</style></head><body><div id="root"><article id="webslides"><section class="aligncenter title slide current" id="section-1" style=""><h1>fusuma😃</h1><h2>安装</h2><p>需要 nodejs 环境</p><pre><code class="language-sh">npm install fusuma
-
-// 全局安装
-npm install fusuma -g
-</code></pre></section><section class="aligncenter slide" id="section-2" style="display: none;"><h2>目录结构</h2><p>仅需要目录。<code>slides</code></p><pre><code>.
-├── .fusumarc.yml
-├── slides  // 存放演示文档，固定
-│   └── 0-title.md
-└── style.css
-</code></pre></section><section class="aligncenter slide" id="section-3" style="display: none;"><h2>开始</h2><pre><code class="language-shell">// 创建项目
-mkdir youProject
-
-// 进入
-cd youProject
-
-// 初始化
-npm init
-npx fusuma init
-
-// 写文档
-cd slides // slides 存放演示文档的目录，在里面有 0-title.md 文件，在里面写markdown即可
-
-// 演示
-npx fusuma start    // 开启一个本地服务器 http://localhost:8080
-</code></pre></section><section class="aligncenter slide" id="section-4" style="display: none;"><h2>配置文件</h2><p><strong><code>.fusumarc.yml</code>如果配置文件不存在，Fusuma 可以运行</strong> </p><pre><code class="language-ini"># 以下是默认配置项
-meta:
-  url:
-  title:
-  thumbnail:
-  description:
-  sns:
-    - twitter
-slide:
-  loop: true
-  sidebar: true
-  targetBlank: true
-  showIndex: true
-  isVertical: false
-  code:
-    languages:
-      - javascript
-    plugins: []
-    theme: default
-  chart: false
-  math: false
-extends:
-  js:
-  css: ./style.css
-  webpack:
-build:
-  ssr: true
-  useCache: true
-  publicPath: /
-
-</code></pre></section><div id="navigation"><a id="next" href="#" title="Arrow Keys">→</a><a id="previous" href="#" title="Arrow Keys">←</a><span id="counter"><a href="#" title="View all slides">1 / 4</a></span></div></article><article id="webslides-zoomed" class="disabled"><div class="wrap"><div class="grid"><div class="column"><div class="wrap-zoom" id="zoomed-section-1"><section class="aligncenter title slide" id="section-1" style="display: none;"><h1>fusuma😃</h1><h2>安装</h2><p>需要 nodejs 环境</p><pre><code class="language-sh">npm install fusuma
-
-// 全局安装
-npm install fusuma -g
-</code></pre></section><div class="zoom-layer"></div></div><p class="text-slide-number">1</p></div><div class="column"><div class="wrap-zoom" id="zoomed-section-2"><section class="aligncenter slide" id="section-2" style="display: none;"><h2>目录结构</h2><p>仅需要目录。<code>slides</code></p><pre><code>.
-├── .fusumarc.yml
-├── slides  // 存放演示文档，固定
-│   └── 0-title.md
-└── style.css
-</code></pre></section><div class="zoom-layer"></div></div><p class="text-slide-number">2</p></div><div class="column"><div class="wrap-zoom" id="zoomed-section-3"><section class="aligncenter slide" id="section-3" style="display: none;"><h2>开始</h2><pre><code class="language-shell">// 创建项目
-mkdir youProject
-
-// 进入
-cd youProject
-
-// 初始化
-npm init
-npx fusuma init
-
-// 写文档
-cd slides // slides 存放演示文档的目录，在里面有 0-title.md 文件，在里面写markdown即可
-
-// 演示
-npx fusuma start    // 开启一个本地服务器 http://localhost:8080
-</code></pre></section><div class="zoom-layer"></div></div><p class="text-slide-number">3</p></div><div class="column"><div class="wrap-zoom" id="zoomed-section-4"><section class="aligncenter slide" id="section-4" style="display: none;"><h2>配置文件</h2><p><strong><code>.fusumarc.yml</code>如果配置文件不存在，Fusuma 可以运行</strong> </p><pre><code class="language-ini"># 以下是默认配置项
-meta:
-  url:
-  title:
-  thumbnail:
-  description:
-  sns:
-    - twitter
-slide:
-  loop: true
-  sidebar: true
-  targetBlank: true
-  showIndex: true
-  isVertical: false
-  code:
-    languages:
-      - javascript
-    plugins: []
-    theme: default
-  chart: false
-  math: false
-extends:
-  js:
-  css: ./style.css
-  webpack:
-build:
-  ssr: true
-  useCache: true
-  publicPath: /
-
-</code></pre></section><div class="zoom-layer"></div></div><p class="text-slide-number">4</p></div></div></div></article></div><script src="/runtime.8f33381f20b7f163e2ad.bundle.js"></script><script src="/vendor.e40d4d928a997a8a9594.bundle.js"></script><script src="/main.381335e89c4e69029d68.bundle.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>Live2D！把可爱的看板娘扑捉到你的博客去吧！</title>
+    <link rel="stylesheet" href="./live2d/css/live2d.css" />
+</head>
+<body>
+<div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="300" height="400" class="live2d"></canvas>
+    <div class="hide-button">隐藏</div>
+    <div class="switchover">切换</div>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    // var home_Path = 'https://haremu.com/'
+    var home_Path = 'https://www.bilibili.com/'
+</script>
+<script type="text/javascript" src="./live2d/js/live2d.js"></script>
+<script type="text/javascript" src="./live2d/js/message.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "./live2d/model/seele/model.json");
+</script>
+</body>
+</html>
