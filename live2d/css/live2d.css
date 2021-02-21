@@ -88,12 +88,13 @@
     border: 1px solid #f4a7b9;
     background: #f4f6f8;
 }
-
+/*
 @media (max-width: 860px) {
     #landlord {
         display: none;
     }
 }
+*/
 
 @keyframes shake {
     2% {
