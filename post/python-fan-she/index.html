@@ -1,0 +1,271 @@
+<html>
+      <head>
+        <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+        <meta charset="utf-8">
+        <meta name="referrer" content="never">
+        <title>python 反射 | 暗天使</title>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css">
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://warm-2233.github.io/styles/main.css">
+          <script src="https://warm-2233.github.io/media/scripts/mdui.min.js"></script>
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Ma+Shan+Zheng&display=swap" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://warm-2233.github.io/media/scripts/script.js"></script>
+        <script >hljs.initHighlightingOnLoad();</script>
+        
+
+    </head>
+    <body class="mdui-theme-primary-purple mdui-theme-accent-purple">
+        <header class="index-img mdui-m-b-3"  style="background-image: url(https://warm-2233.github.io/post-images/python-fan-she.jpg);" >
+                          <button class="mdui-btn  mdui-btn-icon mdui-btn-dense mdui-color-theme-500 mdui-ripple yinying mdui-m-t-1 mdui-m-l-1" mdui-menu="{target: '#demo-attr-cascade'}">
+                  <i class="mdui-icon material-icons"><svg fill="#fff" t="1617688782784" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2678" width="24" height="24"><path d="M170.666667 298.666667m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2679"></path><path d="M170.666667 512m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2680"></path><path d="M170.666667 725.333333m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2681"></path><path d="M298.666667 469.333333m40.106666 0l517.12 0q40.106667 0 40.106667 40.106667l0 5.12q0 40.106667-40.106667 40.106667l-517.12 0q-40.106667 0-40.106666-40.106667l0-5.12q0-40.106667 40.106666-40.106667Z" p-id="2682"></path><path d="M298.666667 682.666667m40.106666 0l517.12 0q40.106667 0 40.106667 40.106666l0 5.12q0 40.106667-40.106667 40.106667l-517.12 0q-40.106667 0-40.106666-40.106667l0-5.12q0-40.106667 40.106666-40.106666Z" p-id="2683"></path><path d="M298.666667 256m40.106666 0l517.12 0q40.106667 0 40.106667 40.106667l0 5.12q0 40.106667-40.106667 40.106666l-517.12 0q-40.106667 0-40.106666-40.106666l0-5.12q0-40.106667 40.106666-40.106667Z" p-id="2684"></path></svg></i></button>
+                <ul class="mdui-menu" id="demo-attr-cascade">
+                
+                        <li class="mdui-menu-item">
+                          <a href="/" class="mdui-ripple">首页</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/archives" class="mdui-ripple">归档</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/tags" class="mdui-ripple">标签</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/post/about" class="mdui-ripple">关于</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/post/FriendLink" class="mdui-ripple">外链</a>
+                        </li>
+                
+                      </ul>
+
+
+        </header>
+        <div class="mdui-container post">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                         <article class="mdui-shadow-10 mdui-p-a-2 post-list">
+                           <div class="mdui-typo-display-1 mdui-m-b-3">python 反射</div>
+                           <a  class="index-list-biaoqian ">2021-08-21</a>
+                           <div class="mdui-typo mdui-m-t-3 post-neirong"><p>在做程序开发中，我们常常会遇到这样的需求：需要执行对象里的某个方法，或需要调用对象中的某个变量，但是由于种种原因我们无法确定这个方法或变量是否存在，这是我们需要用一个特殊的方法或机制要访问和操作这个未知的方法或变量，这中机制就称之为<strong>反射</strong>。</p>
+<!-- more -->
+<p>再python中反射是非常简单的，只用到了几个内置函数。</p>
+<p><strong>本篇中将使用以下对象实例：</strong></p>
+<pre><code class="language-python">class Test:
+    a = 1
+    def __init__(self, name):
+        self.name = name
+        
+    def getName(self):
+        return self.name
+    
+    def setName(self, n):
+        self.name = n
+    
+    def show(self):
+        print(self.name)
+</code></pre>
+<h2 id="hasattr"><code>hasattr</code></h2>
+<p><code>hasattr</code>判断对象中是否有这个方法或变量。返回 bool</p>
+<pre><code class="language-python">t1 = Test(&quot;张三&quot;) 
+
+print(hasattr(t1, &quot;a&quot;))	# True
+print(hasattr(t1, &quot;b&quot;))	# False
+</code></pre>
+<h2 id="getattr"><code>getattr</code></h2>
+<p><code>getattr</code> 获取对象中的方法或变量。返回 get到的对象</p>
+<pre><code class="language-python">t2 = Test(&quot;李四&quot;)
+
+a = getattr(t2, &quot;a&quot;)
+
+# 接收默认值当 对象中不存在该元素时。默认值只作用于变量，不要妄想使用: t2.b 的方式调用 
+b = getattr(t2, &quot;b&quot;, &quot;B&quot;)	# b == &quot;B&quot;
+
+name = getattr(t2, &quot;getName&quot;)
+name()	#等同于调用 t2.getName()
+
+getattr(t2, &quot;setName&quot;)(&quot;233&quot;)
+</code></pre>
+<h2 id="setattr"><code>setattr</code></h2>
+<p>为对象添加或修改变量或方法。返回 None</p>
+<pre><code class="language-python">t3 = Test(&quot;王五&quot;)
+
+setattr(t3, &quot;a&quot;, 2233)
+print(t3.a)	# 2233
+
+# 当想要修改或添加方法时，没有参数的还好。
+# 有参数的需要将 实例对象 传入修改的函数中
+
+
+def show(t):
+    print(&quot;name==&quot;,t.name)
+    
+setattr(t3, &quot;show&quot;, show)
+t3.show(t3)	# 可以试一下传入其他实例对象
+</code></pre>
+<h2 id="delattr"><code>delattr</code></h2>
+<p>删除对象中的变量。注意：不能用于删除方法。删除 类变量 时只会将其值为定义时的 变量值</p>
+<pre><code class="language-python">t4 = Test(&quot;赵六&quot;)
+t4.a = 12345
+
+delattr(t4, &quot;a&quot;)
+print(t4.a)	# 1
+
+delattr(t4, &quot;name&quot;)
+print(t4.name) # 报错 AttributeError
+
+delattr(t4, &quot;getName&quot;) #报错 
+</code></pre>
+<h2 id="__import_"><code>__import_</code></h2>
+<p>动态导入模块</p>
+<pre><code class="language-python">time = __import__(&quot;time&quot;)	# 等价于 import time
+
+print(time.time())
+</code></pre>
+<p>层级导入模块</p>
+<pre><code class="language-python">req = __import__(&quot;urllib.request&quot;, fromlist=True)	
+#等价于 from urllib import request
+
+
+req.urlopen(&quot;https://github.com&quot;)
+
+# 不能使用该方法导入 模块下的方法/函数...
+time = __import__(&quot;time.time&quot;, fromlist=True)
+</code></pre>
+</div>
+                              <div class="mdui-divider mdui-m-t-3"></div>
+                              <div class="mdui-row-xs-2 mdui-m-t-2">
+  <div class="mdui-col"> <div class="mdui-text-left"><a href="https://warm-2233.github.io/post/ipython/">Ipython </a></div></div>
+ <div class="mdui-col"><div class="mdui-text-right "><a href="https://warm-2233.github.io/post/python-duo-jin-cheng/">python 多进程</a></div> </div>
+                                </div>
+                                <div class="mdui-divider mdui-m-t-2"></div>
+   
+ <script src="https://warm-2233.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+                         </article>
+                 <div class="toc-container mdui-float-right">
+                   <style>.toc-container .markdownIt-TOC{display: none; top: 0px;}</style>
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#hasattr"><code>hasattr</code></a></li>
+<li><a href="#getattr"><code>getattr</code></a></li>
+<li><a href="#setattr"><code>setattr</code></a></li>
+<li><a href="#delattr"><code>delattr</code></a></li>
+<li><a href="#__import_"><code>__import_</code></a></li>
+</ul>
+</li>
+</ul>
+
+                <script>
+                     $(window).scroll(function() {
+                      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                      if (scrollTop > 350){ $(".markdownIt-TOC")[0].style.display = "block" }else{  $(".markdownIt-TOC")[0].style.display = "none" }})
+                </script>
+              </div>
+
+                        </div>
+                 </div>
+          
+        </div>
+        <script data-no-instant>
+    (function ($) {
+        $.extend({
+            adamsOverload: function () {
+                $.viewImage({
+                    'target'  : '.post-neirong img',
+                    'exclude' : '.vsmile-icons img , .song-links-item img',
+                    'delay'   : 300
+                });
+            }
+        });
+    })(jQuery);
+    jQuery.adamsOverload();
+
+    let e = document.getElementsByTagName("video")
+                    for (let i=0; i<e.length; i++){
+                      e[i].style.width = "100%"
+                      e[i].controls = true
+                    }
+</script>
+        <footer class="footer mdui-m-t-5 mdui-text-center">
+               <nav class="social-links">
+                      <ul>
+                      
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-rss"></i></a></li>
+                         
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="https://github.com/" target="_blank"><i class="iconfont icon-github"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="https://www.zhihu.com/" target="_blank"><i class="iconfont icon-zhihu"></i></a></li>
+                         
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-douban"></i></a></li>
+                         
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-qq"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-weibo"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="https://www.bilibili.com/" target="_blank"><i class="iconfont icon-youtube"></i></a></li>
+                         
+                           
+                      </ul>
+                    </nav>
+                  <div class="copyright">
+                      <p><h4>邪王暗焰 の 博客</h4>
+<p>莫要低估自己的能力，莫要高估自己的毅力</p>
+静态博客由 <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> 构建，站点主题为 <a href="https://github.com/shanbufun/gridea-theme-jia" target="_blank">jia</a> 并在其基础上修改</p>
+                  </div>
+                  
+              </footer>
+    </body>
+</html>

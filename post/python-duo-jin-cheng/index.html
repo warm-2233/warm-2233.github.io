@@ -1,0 +1,468 @@
+<html>
+      <head>
+        <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+        <meta charset="utf-8">
+        <meta name="referrer" content="never">
+        <title>python 多进程 | 暗天使</title>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css">
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://warm-2233.github.io/styles/main.css">
+          <script src="https://warm-2233.github.io/media/scripts/mdui.min.js"></script>
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Ma+Shan+Zheng&display=swap" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://warm-2233.github.io/media/scripts/script.js"></script>
+        <script >hljs.initHighlightingOnLoad();</script>
+        
+
+    </head>
+    <body class="mdui-theme-primary-purple mdui-theme-accent-purple">
+        <header class="index-img mdui-m-b-3"  style="background-image: url(https://warm-2233.github.io/post-images/python-duo-jin-cheng.jpg);" >
+                          <button class="mdui-btn  mdui-btn-icon mdui-btn-dense mdui-color-theme-500 mdui-ripple yinying mdui-m-t-1 mdui-m-l-1" mdui-menu="{target: '#demo-attr-cascade'}">
+                  <i class="mdui-icon material-icons"><svg fill="#fff" t="1617688782784" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2678" width="24" height="24"><path d="M170.666667 298.666667m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2679"></path><path d="M170.666667 512m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2680"></path><path d="M170.666667 725.333333m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2681"></path><path d="M298.666667 469.333333m40.106666 0l517.12 0q40.106667 0 40.106667 40.106667l0 5.12q0 40.106667-40.106667 40.106667l-517.12 0q-40.106667 0-40.106666-40.106667l0-5.12q0-40.106667 40.106666-40.106667Z" p-id="2682"></path><path d="M298.666667 682.666667m40.106666 0l517.12 0q40.106667 0 40.106667 40.106666l0 5.12q0 40.106667-40.106667 40.106667l-517.12 0q-40.106667 0-40.106666-40.106667l0-5.12q0-40.106667 40.106666-40.106666Z" p-id="2683"></path><path d="M298.666667 256m40.106666 0l517.12 0q40.106667 0 40.106667 40.106667l0 5.12q0 40.106667-40.106667 40.106666l-517.12 0q-40.106667 0-40.106666-40.106666l0-5.12q0-40.106667 40.106666-40.106667Z" p-id="2684"></path></svg></i></button>
+                <ul class="mdui-menu" id="demo-attr-cascade">
+                
+                        <li class="mdui-menu-item">
+                          <a href="/" class="mdui-ripple">首页</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/archives" class="mdui-ripple">归档</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/tags" class="mdui-ripple">标签</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/post/about" class="mdui-ripple">关于</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/post/FriendLink" class="mdui-ripple">外链</a>
+                        </li>
+                
+                      </ul>
+
+
+        </header>
+        <div class="mdui-container post">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                         <article class="mdui-shadow-10 mdui-p-a-2 post-list">
+                           <div class="mdui-typo-display-1 mdui-m-b-3">python 多进程</div>
+                           <a  class="index-list-biaoqian ">2021-04-15</a>
+                           <div class="mdui-typo mdui-m-t-3 post-neirong"><p>进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行<strong>资源分配和调</strong>度的基本单位，是操作系统结构的基础。进程是线程的容器。程序是指令、数据及其组织形式的描述，进程是程序的实体。</p>
+<!-- more -->
+<p>一个<strong>正在运行</strong>的程序被称为一个进程，没有运行的程序只是一个文件。</p>
+<p><strong>主进程</strong> 在程序运行时由操作系统默认创造的。一个主进程可以创建多个子进程。</p>
+<p><strong>注意：</strong><br>
+在Windows上要想使用进程模块，就必须把有关进程的代码写在当前<code>.py</code>文件的 <code>if __name__ == &quot;__main__&quot;:</code> 语句的下面，才能正常使用Windows下的进程模块。Unix/Linux下则不需要。</p>
+<h2 id="创建多进程">创建多进程</h2>
+<ol>
+<li>导入 <code>multiprocessing</code> 模块</li>
+<li>创建子进程 <code>multiprocessing.Process</code>
+<ul>
+<li>参数 <code>target </code> 函数名</li>
+<li>参数 <code>args</code> 给函数传参（元组）</li>
+<li>参数 <code>kwargs</code> 以关键字传参（字典）</li>
+</ul>
+</li>
+<li>执行 <code>.start()</code></li>
+</ol>
+<pre><code class="language-python">import multiprocessing
+import time
+
+def a():
+    for i in range(99):
+        print(&quot;func a =====&gt;&quot;, i)
+        time.sleep(0.01)
+    print(&quot;func a over..&quot;)
+
+def b():
+    for i in range(99):
+        print(&quot;\tfunc b =====&gt;&quot;, i)
+        time.sleep(0.01) 
+    print(&quot;func b over..&quot;)
+
+if __name__ == &quot;__main__&quot;: 
+    # 创建了两个子进程
+    m = multiprocessing.Process(target=a)
+    m2 = multiprocessing.Process(target=b)
+    m.start()
+    m2.start()
+    print(&quot;main over ..&quot;)
+</code></pre>
+<h2 id="返回值">返回值</h2>
+<p>作为子进程的函数，其没有返回值，即使有也会被忽略，但其 <code>return</code> 语句可作为子进程退出使用。</p>
+<pre><code class="language-python">import os
+import multiprocessing
+
+def subprocess(a,b):
+    for i in range(a,b):
+        if i == 3:
+            return
+        print(i)
+
+if __name__ == &quot;__main__&quot;: 
+    m = multiprocessing.Process(target=subprocess, args=(1,5))
+    m.start()
+    print(&quot;main over...&quot;)
+</code></pre>
+<h2 id="获取进程编号">获取进程编号</h2>
+<ul>
+<li><code>os.getpid() </code> 返回当前的进程ID</li>
+<li><code>os.getppid()</code> 返回当前进程的父级进程ID</li>
+</ul>
+<pre><code class="language-python">import os
+import multiprocessing
+
+def a():
+    print(&quot;a 进程ID是：&quot;, os.getpid())
+    print(os.getpid(), &quot;的父进程ID是：&quot;, os.getppid())  
+
+def subprocess():
+    print(&quot;subprocess 进程ID是：&quot;, os.getpid())
+    print(os.getpid(), &quot;的父进程ID是：&quot;, os.getppid()) 
+    ma = multiprocessing.Process(target=a)
+    ma.start()
+
+if __name__ == &quot;__main__&quot;: 
+    print(&quot;main 当前进程ID是：&quot;, os.getpid())   
+    m = multiprocessing.Process(target=subprocess)
+    m.start()
+    print(&quot;main over...&quot;)
+</code></pre>
+<h2 id="守护进程">守护进程</h2>
+<p>在python 中主进程会等待子进程执行完毕才退出程序。当我们需要实现主进程退出其子进程一并销毁时，就需要守护进程。</p>
+<p>设置守护进程的子进程将会有以下特性：</p>
+<ul>
+<li>守护进程会在主进程代码执行结束后就终止</li>
+<li>守护进程内无法再开启子进程，否则抛出异常</li>
+</ul>
+<pre><code class="language-python">import multiprocessing
+import time
+
+def subprocess():
+    for i in range(99999):
+        print(i)
+
+if __name__ == &quot;__main__&quot;: 
+    # m = multiprocessing.Process(target=subprocess, daemon=True)
+    m = multiprocessing.Process(target=subprocess)
+    # 将 daemon 设置为 True 即可开启
+    m.daemon = True
+    m.start()
+    time.sleep(1)
+    print(&quot;main over...&quot;)
+</code></pre>
+<h2 id="join">join</h2>
+<p>将阻塞程序，直到进程退出。</p>
+<p>接收一个参数，表示阻塞 N 秒。</p>
+<pre><code class="language-python">import multiprocessing
+
+def subprocess():
+    while 1:
+        print(&quot;abababab.....&quot;)
+
+if __name__ == &quot;__main__&quot;:   
+    m = multiprocessing.Process(target=subprocess, daemon=True)
+    m.start()
+    m.join(3)
+    print(&quot;main over...&quot;)
+</code></pre>
+<h2 id="进程池">进程池</h2>
+<p><code>multiprocessing </code>中的<code>Pool</code>类可以提供指定数量的进程供用户调用，<code>Pool</code>的默认大小是<strong>CPU的核数</strong>。当有新的请求提交到<code>Pool</code>中时，如果池还没有满，就会创建一个新的进程来执行请求。如果池满，请求就会告知先等待，直到池中有进程结束，才会创建新的进程来执行这些请求。<br>
+介绍一下<code>multiprocessing </code>模块下的<code>Pool</code>类下的几个方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>apply</code></td>
+<td>将函数加入进程池，在返回之前将阻塞程序执行</td>
+</tr>
+<tr>
+<td><code>apply_async</code></td>
+<td>将函数加入进程池， 但它是非阻塞的且支持结果返回后进行回调。</td>
+</tr>
+<tr>
+<td><code>map</code></td>
+<td>第一个参数传入函数，第二个参数是一个<code>iterable</code>，将<code>iterable</code>中的元素作为函数的参数传入，创建<code>len(iterable)</code> 个进程对象加入进程池，它会使进程阻塞直到结果返回（list）。这样的函数只能接收一个参数</td>
+</tr>
+<tr>
+<td><code>map_async</code></td>
+<td>与<code>map</code>方法效果类似，但它是非阻塞的且支持结果返回后进行回调。</td>
+</tr>
+<tr>
+<td><code>starmap</code></td>
+<td>与<code>map</code>方法效果类似，不过 <em>iterable</em> 中的每一项会被解包再作为函数参数。</td>
+</tr>
+<tr>
+<td><code>starmap_async</code></td>
+<td>与<code>starmap</code>方法效果类似, 但它是非阻塞的且支持结果返回后进行回调。</td>
+</tr>
+<tr>
+<td><code>close</code></td>
+<td>阻止后续任务提交到进程池，当所有任务执行完成后，工作进程会退出。</td>
+</tr>
+<tr>
+<td><code>terminate</code></td>
+<td>不必等待未完成的任务，立即停止工作进程。</td>
+</tr>
+<tr>
+<td><code>join</code></td>
+<td>等待工作进程结束。调用 <code>join</code>前必须先调用 <code>close</code> 或者 <code>terminate</code>。</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://docs.python.org/zh-cn/3/library/multiprocessing.html#multiprocessing.pool.Pool.apply">详情见-官方文档</a></p>
+<p><strong>示例</strong></p>
+<pre><code class="language-python">import multiprocessing
+import time
+import random
+
+def subprocess(name):
+    time.sleep(random.random())
+    return &quot;return -&gt; &quot; + name
+
+def callback_func(r):
+    print(&quot;\t callback_func -&gt;&quot;, r.split(&quot;-&gt;&quot;)[-1] if type(r)!=list else &quot; &amp;&quot;.join([i.split(&quot;-&gt;&quot;)[-1] for i in r]))
+
+
+if __name__ == &quot;__main__&quot;:
+    p = multiprocessing.Pool(4)
+
+    print(p.apply(subprocess,args=(&quot;apply&quot;,)))
+    print(p.apply_async(subprocess, args=(&quot;apply_async&quot;,), callback=callback_func).get())
+    print(p.map(subprocess, [&quot;map1&quot;, &quot;map2&quot;, &quot;map3&quot;]))
+    print(p.map_async(subprocess, [&quot;map_async1&quot;, &quot;map_async2&quot;], callback=callback_func).get())
+    print(p.starmap(subprocess, [&quot;1&quot;,&quot;2&quot;]))
+    print(p.starmap_async(subprocess, [&quot;3&quot;,&quot;4&quot;], callback=callback_func).get())
+
+    p.close()
+    # p.apply(subprocess, args=(&quot;t&quot;,))
+    p.join()
+    print(&quot;main over...&quot;)
+</code></pre>
+<p>再看以下代码的执行所需要的时间：</p>
+<pre><code class="language-python">import time
+import multiprocessing
+def run(fn):
+    time.sleep(1)
+    print(fn*fn)
+
+if __name__ == &quot;__main__&quot;:
+    testFL = [1,2,3,4,5,6]
+    print ('顺序执行:') #顺序执行(也就是串行执行，单进程)
+    s = time.time()
+    for fn in testFL:
+        run(fn)
+    t1 = time.time()
+    print (&quot;顺序执行时间：&quot;, int(t1 - s))
+    print(&quot;======================================&quot;)
+    print ('创建多个进程，并行执行:')
+    pool = multiprocessing.Pool(5)  #创建拥有5个进程数量的进程池
+    pool.map(run, testFL)
+    pool.close()
+    pool.join()
+    t2 = time.time()
+    print (&quot;并行执行时间：&quot;, int(t2-t1))
+</code></pre>
+<h2 id="进程间通信">进程间通信</h2>
+<p>操作系统会为每一个创建的<strong>进程</strong>分配一个独立的地址空间，不同进程的地址空间是<strong>完全隔离</strong>的，因此如果不加其他的措施，他们完全感觉不到彼此的存在。</p>
+<h3 id="管道通信">管道通信</h3>
+<pre><code class="language-python">conn1, conn2 = multiprocessing.Pipe()
+</code></pre>
+<p>返回的两个连接对象 <code>Pipe()</code>表示管道的两端。<code>Pipe</code>方法有<code>duplex</code>参数，如果<code>duplex</code>参数为<code>True</code>(默认值)，那么这个管道是全双工模式。如果 <code>duplex </code>被置为 <code>False</code> ，那么该管道是单向的，即 <code>conn1</code> 只能用于接收消息，而 <code>conn2</code> 仅能用于发送消息。每个连接对象都有 <code>send()</code> 和 <code>recv()</code> 方法（相互之间的）。读取管道信息将会阻塞程序执行。如果管道已经被关闭，那么<code>recv</code>方法会抛出<code>EOFError</code></p>
+<p><code>Pipe</code> 常用的方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>send</code></td>
+<td>将一个对象发送到连接的另一端</td>
+</tr>
+<tr>
+<td><code>recv</code></td>
+<td>返回一个由另一端使用 <code>send</code> 发送的对象。，将会阻塞程序执行</td>
+</tr>
+<tr>
+<td><code>close</code></td>
+<td>关闭连接对象</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">import multiprocessing
+
+def subprocess(n):
+    n.send(&quot;subprocess send&quot;)
+    print(n.recv())
+
+
+if __name__ == &quot;__main__&quot;:
+    print(&quot;main&quot;)
+    p1, p2 = multiprocessing.Pipe()
+    m = multiprocessing.Process(target=subprocess, args=(p2,))
+    m.start()
+    print(p1.recv())
+    p1.send(&quot;main send&quot;)
+</code></pre>
+<h3 id="消息队列">消息队列</h3>
+<h2 id="进程锁">进程锁</h2>
+<p><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017628290184064">廖雪峰-多进程</a></p>
+<p><a href="https://www.cnblogs.com/freeman818/p/7154089.html">Python多进程并发操作进程池Pool</a></p>
+<p><a href="https://www.cnblogs.com/yssjun/p/11438850.html">python多进程通信实例分析</a></p>
+<hr>
+<p>未完待续。。。</p>
+<p>这这是我拙劣的见解，若有什么意见建议务必提出。</p>
+<p>浪费了你人生中的几秒真的很抱歉（≧ ﹏ ≦）</p>
+</div>
+                              <div class="mdui-divider mdui-m-t-3"></div>
+                              <div class="mdui-row-xs-2 mdui-m-t-2">
+  <div class="mdui-col"> <div class="mdui-text-left"><a href="https://warm-2233.github.io/post/python-fan-she/">python 反射</a></div></div>
+ <div class="mdui-col"><div class="mdui-text-right "><a href="https://warm-2233.github.io/post/node-js/">node js</a></div> </div>
+                                </div>
+                                <div class="mdui-divider mdui-m-t-2"></div>
+   
+ <script src="https://warm-2233.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+                         </article>
+                 <div class="toc-container mdui-float-right">
+                   <style>.toc-container .markdownIt-TOC{display: none; top: 0px;}</style>
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%A4%9A%E8%BF%9B%E7%A8%8B">创建多进程</a></li>
+<li><a href="#%E8%BF%94%E5%9B%9E%E5%80%BC">返回值</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E8%BF%9B%E7%A8%8B%E7%BC%96%E5%8F%B7">获取进程编号</a></li>
+<li><a href="#%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B">守护进程</a></li>
+<li><a href="#join">join</a></li>
+<li><a href="#%E8%BF%9B%E7%A8%8B%E6%B1%A0">进程池</a></li>
+<li><a href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1">进程间通信</a>
+<ul>
+<li><a href="#%E7%AE%A1%E9%81%93%E9%80%9A%E4%BF%A1">管道通信</a></li>
+<li><a href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97">消息队列</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BF%9B%E7%A8%8B%E9%94%81">进程锁</a></li>
+</ul>
+</li>
+</ul>
+
+                <script>
+                     $(window).scroll(function() {
+                      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                      if (scrollTop > 350){ $(".markdownIt-TOC")[0].style.display = "block" }else{  $(".markdownIt-TOC")[0].style.display = "none" }})
+                </script>
+              </div>
+
+                        </div>
+                 </div>
+          
+        </div>
+        <script data-no-instant>
+    (function ($) {
+        $.extend({
+            adamsOverload: function () {
+                $.viewImage({
+                    'target'  : '.post-neirong img',
+                    'exclude' : '.vsmile-icons img , .song-links-item img',
+                    'delay'   : 300
+                });
+            }
+        });
+    })(jQuery);
+    jQuery.adamsOverload();
+
+    let e = document.getElementsByTagName("video")
+                    for (let i=0; i<e.length; i++){
+                      e[i].style.width = "100%"
+                      e[i].controls = true
+                    }
+</script>
+        <footer class="footer mdui-m-t-5 mdui-text-center">
+               <nav class="social-links">
+                      <ul>
+                      
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-rss"></i></a></li>
+                         
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="https://github.com/" target="_blank"><i class="iconfont icon-github"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="https://www.zhihu.com/" target="_blank"><i class="iconfont icon-zhihu"></i></a></li>
+                         
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-douban"></i></a></li>
+                         
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-qq"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-weibo"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="https://www.bilibili.com/" target="_blank"><i class="iconfont icon-youtube"></i></a></li>
+                         
+                           
+                      </ul>
+                    </nav>
+                  <div class="copyright">
+                      <p><h4>邪王暗焰 の 博客</h4>
+<p>莫要低估自己的能力，莫要高估自己的毅力</p>
+静态博客由 <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> 构建，站点主题为 <a href="https://github.com/shanbufun/gridea-theme-jia" target="_blank">jia</a> 并在其基础上修改</p>
+                  </div>
+                  
+              </footer>
+    </body>
+</html>

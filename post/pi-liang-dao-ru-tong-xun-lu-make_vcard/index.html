@@ -1,0 +1,213 @@
+<html>
+      <head>
+        <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+        <meta charset="utf-8">
+        <meta name="referrer" content="never">
+        <title>批量导入通讯录 make_vcard | 暗天使</title>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css">
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://warm-2233.github.io/styles/main.css">
+          <script src="https://warm-2233.github.io/media/scripts/mdui.min.js"></script>
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Ma+Shan+Zheng&display=swap" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://warm-2233.github.io/media/scripts/script.js"></script>
+        <script >hljs.initHighlightingOnLoad();</script>
+        
+
+    </head>
+    <body class="mdui-theme-primary-purple mdui-theme-accent-purple">
+        <header class="index-img mdui-m-b-3"  style="background-image: url(https://warm-2233.github.io/post-images/pi-liang-dao-ru-tong-xun-lu-make_vcard.jpg);" >
+                          <button class="mdui-btn  mdui-btn-icon mdui-btn-dense mdui-color-theme-500 mdui-ripple yinying mdui-m-t-1 mdui-m-l-1" mdui-menu="{target: '#demo-attr-cascade'}">
+                  <i class="mdui-icon material-icons"><svg fill="#fff" t="1617688782784" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2678" width="24" height="24"><path d="M170.666667 298.666667m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2679"></path><path d="M170.666667 512m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2680"></path><path d="M170.666667 725.333333m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2681"></path><path d="M298.666667 469.333333m40.106666 0l517.12 0q40.106667 0 40.106667 40.106667l0 5.12q0 40.106667-40.106667 40.106667l-517.12 0q-40.106667 0-40.106666-40.106667l0-5.12q0-40.106667 40.106666-40.106667Z" p-id="2682"></path><path d="M298.666667 682.666667m40.106666 0l517.12 0q40.106667 0 40.106667 40.106666l0 5.12q0 40.106667-40.106667 40.106667l-517.12 0q-40.106667 0-40.106666-40.106667l0-5.12q0-40.106667 40.106666-40.106666Z" p-id="2683"></path><path d="M298.666667 256m40.106666 0l517.12 0q40.106667 0 40.106667 40.106667l0 5.12q0 40.106667-40.106667 40.106666l-517.12 0q-40.106667 0-40.106666-40.106666l0-5.12q0-40.106667 40.106666-40.106667Z" p-id="2684"></path></svg></i></button>
+                <ul class="mdui-menu" id="demo-attr-cascade">
+                
+                        <li class="mdui-menu-item">
+                          <a href="/" class="mdui-ripple">首页</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/archives" class="mdui-ripple">归档</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/tags" class="mdui-ripple">标签</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/post/about" class="mdui-ripple">关于</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/post/FriendLink" class="mdui-ripple">外链</a>
+                        </li>
+                
+                      </ul>
+
+
+        </header>
+        <div class="mdui-container post">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                         <article class="mdui-shadow-10 mdui-p-a-2 post-list">
+                           <div class="mdui-typo-display-1 mdui-m-b-3">批量导入通讯录 make_vcard</div>
+                           <a  class="index-list-biaoqian ">2022-03-25</a>
+                           <div class="mdui-typo mdui-m-t-3 post-neirong"><p>这是鄙人使用<code>python</code>写的命令行程序，其功能是生成<code>.vcf</code>通讯录导入文件。现已发布至<code>pypi</code>。</p>
+<!-- more -->
+<p><strong>pip 安装</strong></p>
+<pre><code>pip install make_vcard
+</code></pre>
+<p><strong>使用方法</strong></p>
+<pre><code>python -m make_vcard text.xlsx
+</code></pre>
+<p>以上命令会根据其中内容生成名为<code>test.vcf</code>的文件</p>
+<p><strong>更多信息</strong></p>
+<pre><code>usage: make_vcard [-h] [--example] [--sheet SHEET] [--filetype FILETYPE] [-o O] inputFileName
+
+基本用法 python -m make_vcard inputFileName.xlsx [-o outputFileName]
+
+positional arguments:
+  inputFileName        指定读取的文件
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --example            生成示例excel文件；
+  --sheet SHEET        指定读取哪张表；默认为第一张表
+  --filetype FILETYPE  指定文件类型（默认为excel）只可以指定为 csv
+  -o O                 输出保存的文件名；不需要加后缀！
+
+注意：不同设备对 字段 的支持不一样，可能您按照这个规则并不会得到您想要的结果！
+</code></pre>
+<p><strong>使用说明</strong></p>
+<p>只有 <strong>姓名和电话</strong> 是必要的，其它是可以任意组合</p>
+<p>有 <strong>电话, 邮箱, 网址, 地址</strong> 是可以重复出现的；其规则是 名称+数字；例: <code>电话A</code></p>
+<p>可重复出现的数据可定义其<strong>类型</strong></p>
+<p><strong>电话</strong>的类型有：优先，住宅，工作，单元，传真，其它</p>
+<p><strong>邮箱</strong>的类型有：住宅，工作，其它</p>
+<p><strong>网址</strong>的类型有：住宅，工作，其它</p>
+<p><strong>地址</strong>的类型有：住宅，工作，其它，邮寄</p>
+<pre><code>例如： 邮箱(住宅)
+例如： 网址（工作）
+</code></pre>
+<p><em>注意：不同设备对 字段 的支持不一样，可能您按照这个规则并不会得到您想要的结果！</em></p>
+</div>
+                              <div class="mdui-divider mdui-m-t-3"></div>
+                              <div class="mdui-row-xs-2 mdui-m-t-2">
+  <div class="mdui-col"> </div>
+ <div class="mdui-col"><div class="mdui-text-right "><a href="https://warm-2233.github.io/post/flex-bu-ju-dan-xing-bu-ju/">flex  布局-弹性布局</a></div> </div>
+                                </div>
+                                <div class="mdui-divider mdui-m-t-2"></div>
+   
+ <script src="https://warm-2233.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+                         </article>
+                 <div class="toc-container mdui-float-right">
+                   <style>.toc-container .markdownIt-TOC{display: none; top: 0px;}</style>
+                
+                <script>
+                     $(window).scroll(function() {
+                      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                      if (scrollTop > 350){ $(".markdownIt-TOC")[0].style.display = "block" }else{  $(".markdownIt-TOC")[0].style.display = "none" }})
+                </script>
+              </div>
+
+                        </div>
+                 </div>
+          
+        </div>
+        <script data-no-instant>
+    (function ($) {
+        $.extend({
+            adamsOverload: function () {
+                $.viewImage({
+                    'target'  : '.post-neirong img',
+                    'exclude' : '.vsmile-icons img , .song-links-item img',
+                    'delay'   : 300
+                });
+            }
+        });
+    })(jQuery);
+    jQuery.adamsOverload();
+
+    let e = document.getElementsByTagName("video")
+                    for (let i=0; i<e.length; i++){
+                      e[i].style.width = "100%"
+                      e[i].controls = true
+                    }
+</script>
+        <footer class="footer mdui-m-t-5 mdui-text-center">
+               <nav class="social-links">
+                      <ul>
+                      
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-rss"></i></a></li>
+                         
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="https://github.com/" target="_blank"><i class="iconfont icon-github"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="https://www.zhihu.com/" target="_blank"><i class="iconfont icon-zhihu"></i></a></li>
+                         
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-douban"></i></a></li>
+                         
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-qq"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-weibo"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="https://www.bilibili.com/" target="_blank"><i class="iconfont icon-youtube"></i></a></li>
+                         
+                           
+                      </ul>
+                    </nav>
+                  <div class="copyright">
+                      <p><h4>邪王暗焰 の 博客</h4>
+<p>莫要低估自己的能力，莫要高估自己的毅力</p>
+静态博客由 <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> 构建，站点主题为 <a href="https://github.com/shanbufun/gridea-theme-jia" target="_blank">jia</a> 并在其基础上修改</p>
+                  </div>
+                  
+              </footer>
+    </body>
+</html>

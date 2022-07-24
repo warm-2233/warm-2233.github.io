@@ -1,0 +1,239 @@
+<html>
+      <head>
+        <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+        <meta charset="utf-8">
+        <meta name="referrer" content="never">
+        <title>python-类型注解 | 暗天使</title>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css">
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://warm-2233.github.io/styles/main.css">
+          <script src="https://warm-2233.github.io/media/scripts/mdui.min.js"></script>
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Ma+Shan+Zheng&display=swap" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://warm-2233.github.io/media/scripts/script.js"></script>
+        <script >hljs.initHighlightingOnLoad();</script>
+        
+
+    </head>
+    <body class="mdui-theme-primary-purple mdui-theme-accent-purple">
+        <header class="index-img mdui-m-b-3"  style="background-image: url(https://warm-2233.github.io/post-images/python-lei-xing-zhu-jie.jpg);" >
+                          <button class="mdui-btn  mdui-btn-icon mdui-btn-dense mdui-color-theme-500 mdui-ripple yinying mdui-m-t-1 mdui-m-l-1" mdui-menu="{target: '#demo-attr-cascade'}">
+                  <i class="mdui-icon material-icons"><svg fill="#fff" t="1617688782784" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2678" width="24" height="24"><path d="M170.666667 298.666667m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2679"></path><path d="M170.666667 512m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2680"></path><path d="M170.666667 725.333333m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2681"></path><path d="M298.666667 469.333333m40.106666 0l517.12 0q40.106667 0 40.106667 40.106667l0 5.12q0 40.106667-40.106667 40.106667l-517.12 0q-40.106667 0-40.106666-40.106667l0-5.12q0-40.106667 40.106666-40.106667Z" p-id="2682"></path><path d="M298.666667 682.666667m40.106666 0l517.12 0q40.106667 0 40.106667 40.106666l0 5.12q0 40.106667-40.106667 40.106667l-517.12 0q-40.106667 0-40.106666-40.106667l0-5.12q0-40.106667 40.106666-40.106666Z" p-id="2683"></path><path d="M298.666667 256m40.106666 0l517.12 0q40.106667 0 40.106667 40.106667l0 5.12q0 40.106667-40.106667 40.106666l-517.12 0q-40.106667 0-40.106666-40.106666l0-5.12q0-40.106667 40.106666-40.106667Z" p-id="2684"></path></svg></i></button>
+                <ul class="mdui-menu" id="demo-attr-cascade">
+                
+                        <li class="mdui-menu-item">
+                          <a href="/" class="mdui-ripple">首页</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/archives" class="mdui-ripple">归档</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/tags" class="mdui-ripple">标签</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/post/about" class="mdui-ripple">关于</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/post/FriendLink" class="mdui-ripple">外链</a>
+                        </li>
+                
+                      </ul>
+
+
+        </header>
+        <div class="mdui-container post">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                         <article class="mdui-shadow-10 mdui-p-a-2 post-list">
+                           <div class="mdui-typo-display-1 mdui-m-b-3">python-类型注解</div>
+                           <a  class="index-list-biaoqian ">2021-09-04</a>
+                           <div class="mdui-typo mdui-m-t-3 post-neirong"><p>python 是动态语言，变量随时可以被赋值，且能赋值为不同类型，python 不是静态编译型语言，变量类型是在运行器决定的，动态语言很灵活，但是这种特性也是弊端，由于不做任何类型检查，直到运行期问题才显现出来，或者线上运行时才能暴露出问题。函数的使用者看到函数的时候，并不知道你的函数的设计，并不知道应该传入什么类型数据。IDE 也难以提示。</p>
+<!-- more -->
+<figure data-type="image" tabindex="1"><img src="https://warm-2233.github.io/post-images/1630746800351.png" alt="" loading="lazy"></figure>
+<p>在此之前先介绍一下 函数注释</p>
+<h2 id="函数注释">函数注释</h2>
+<p>在函数中对该函数 功能、参数 的解释。</p>
+<pre><code class="language-python">def add(a,b):
+    &quot;&quot;&quot;
+    param a: int 加数
+    param b: int 加数
+    return int 两数的和
+    &quot;&quot;&quot;
+    return a+b
+</code></pre>
+<p>这个可以使用 <code>help()</code> 内置函数，获取其内容。一般的IDE都能对其给出提示。</p>
+<figure data-type="image" tabindex="2"><img src="https://warm-2233.github.io/post-images/1630746822590.png" alt="" loading="lazy"></figure>
+<p>但这玩意只能解决 函数的注释问题，对变量等并没有解决。而且这只是约定，并不是每个程序员都会写注释</p>
+<p>为了解决这一痛点，python 引入<strong>类型注解</strong>这一概念</p>
+<p>类型注解就是在 变量 函数 定义是为其标注上其<strong>类型</strong>。</p>
+<p>语法：<code>var: type = value</code></p>
+<p>例：</p>
+<pre><code class="language-python">name: str = &quot;张三&quot;
+</code></pre>
+<p>这样在IDE中就能给出更加精确的提示：</p>
+<figure data-type="image" tabindex="3"><img src="https://warm-2233.github.io/post-images/1630746836212.png" alt="" loading="lazy"></figure>
+<p>再结合 函数注释 给函数最精确的描述</p>
+<figure data-type="image" tabindex="4"><img src="https://warm-2233.github.io/post-images/1630746847657.png" alt="" loading="lazy"></figure>
+<p>这样 函数注释 只用描述函数的功能，不用再花大量篇幅解释 参数 返回值类型。</p>
+<p>更何况这不止对函数有用。</p>
+<h2 id="typing">typing</h2>
+<p>对于 list 等类型，类型注解是不知道里面的元素是什么类型的，只知道 变量 是一个列表 list 等类型。</p>
+<pre><code class="language-python">names: list = [&quot;张三&quot;, &quot;李四&quot;]
+    # 类型注解是不知道names里面的元素是str类型的
+</code></pre>
+<p>这里就引入 typing 模块，它提供了很 ‘强’ 的类型支持。</p>
+<p>对于上面的例子，就可以改成：</p>
+<pre><code class="language-python">from typing import List
+names: List[str] = [&quot;张三&quot;, &quot;李四&quot;]
+</code></pre>
+<p>这是一些常用的类型注解：</p>
+<pre><code class="language-python">from typing import List, Tuple, Set, Dict
+
+
+a: List[int] = [1, 2, 3]
+
+b: Tuple[int, int] = (1,2)
+
+c: Set[str] = {&quot;a&quot;, &quot;b&quot;}
+
+d: Dict[str,str] = {&quot;a&quot;:&quot;A&quot;, &quot;B&quot;:&quot;b&quot;}
+</code></pre>
+<p><a href="https://blog.csdn.net/cainiao_python/article/details/98818428">https://blog.csdn.net/cainiao_python/article/details/98818428</a></p>
+<p><a href="https://docs.python.org/zh-cn/3/library/typing.html">https://docs.python.org/zh-cn/3/library/typing.html</a></p>
+<p>写在最后</p>
+<p>类型注解，并不会影响代码的运行，即你注解是int类型但还是可以改为其他类型。并不是强制性的，毕竟这是注解嘛。</p>
+<p>养成良好的编码习惯是很重要的。</p>
+</div>
+                              <div class="mdui-divider mdui-m-t-3"></div>
+                              <div class="mdui-row-xs-2 mdui-m-t-2">
+  <div class="mdui-col"> <div class="mdui-text-left"><a href="https://warm-2233.github.io/post/flask-blog/">flask blog</a></div></div>
+ <div class="mdui-col"><div class="mdui-text-right "><a href="https://warm-2233.github.io/post/python-yuan-lei/">Python 元类</a></div> </div>
+                                </div>
+                                <div class="mdui-divider mdui-m-t-2"></div>
+   
+ <script src="https://warm-2233.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+                         </article>
+                 <div class="toc-container mdui-float-right">
+                   <style>.toc-container .markdownIt-TOC{display: none; top: 0px;}</style>
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%87%BD%E6%95%B0%E6%B3%A8%E9%87%8A">函数注释</a></li>
+<li><a href="#typing">typing</a></li>
+</ul>
+</li>
+</ul>
+
+                <script>
+                     $(window).scroll(function() {
+                      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                      if (scrollTop > 350){ $(".markdownIt-TOC")[0].style.display = "block" }else{  $(".markdownIt-TOC")[0].style.display = "none" }})
+                </script>
+              </div>
+
+                        </div>
+                 </div>
+          
+        </div>
+        <script data-no-instant>
+    (function ($) {
+        $.extend({
+            adamsOverload: function () {
+                $.viewImage({
+                    'target'  : '.post-neirong img',
+                    'exclude' : '.vsmile-icons img , .song-links-item img',
+                    'delay'   : 300
+                });
+            }
+        });
+    })(jQuery);
+    jQuery.adamsOverload();
+
+    let e = document.getElementsByTagName("video")
+                    for (let i=0; i<e.length; i++){
+                      e[i].style.width = "100%"
+                      e[i].controls = true
+                    }
+</script>
+        <footer class="footer mdui-m-t-5 mdui-text-center">
+               <nav class="social-links">
+                      <ul>
+                      
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-rss"></i></a></li>
+                         
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="https://github.com/" target="_blank"><i class="iconfont icon-github"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="https://www.zhihu.com/" target="_blank"><i class="iconfont icon-zhihu"></i></a></li>
+                         
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-douban"></i></a></li>
+                         
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-qq"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-weibo"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="https://www.bilibili.com/" target="_blank"><i class="iconfont icon-youtube"></i></a></li>
+                         
+                           
+                      </ul>
+                    </nav>
+                  <div class="copyright">
+                      <p><h4>邪王暗焰 の 博客</h4>
+<p>莫要低估自己的能力，莫要高估自己的毅力</p>
+静态博客由 <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> 构建，站点主题为 <a href="https://github.com/shanbufun/gridea-theme-jia" target="_blank">jia</a> 并在其基础上修改</p>
+                  </div>
+                  
+              </footer>
+    </body>
+</html>

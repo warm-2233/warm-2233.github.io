@@ -1,0 +1,397 @@
+<html>
+      <head>
+        <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+        <meta charset="utf-8">
+        <meta name="referrer" content="never">
+        <title>flask blog | 暗天使</title>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css">
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://warm-2233.github.io/styles/main.css">
+          <script src="https://warm-2233.github.io/media/scripts/mdui.min.js"></script>
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Ma+Shan+Zheng&display=swap" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://warm-2233.github.io/media/scripts/script.js"></script>
+        <script >hljs.initHighlightingOnLoad();</script>
+        
+
+    </head>
+    <body class="mdui-theme-primary-purple mdui-theme-accent-purple">
+        <header class="index-img mdui-m-b-3"  style="background-image: url(https://warm-2233.github.io/post-images/flask-blog.jpg);" >
+                          <button class="mdui-btn  mdui-btn-icon mdui-btn-dense mdui-color-theme-500 mdui-ripple yinying mdui-m-t-1 mdui-m-l-1" mdui-menu="{target: '#demo-attr-cascade'}">
+                  <i class="mdui-icon material-icons"><svg fill="#fff" t="1617688782784" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2678" width="24" height="24"><path d="M170.666667 298.666667m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2679"></path><path d="M170.666667 512m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2680"></path><path d="M170.666667 725.333333m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z" p-id="2681"></path><path d="M298.666667 469.333333m40.106666 0l517.12 0q40.106667 0 40.106667 40.106667l0 5.12q0 40.106667-40.106667 40.106667l-517.12 0q-40.106667 0-40.106666-40.106667l0-5.12q0-40.106667 40.106666-40.106667Z" p-id="2682"></path><path d="M298.666667 682.666667m40.106666 0l517.12 0q40.106667 0 40.106667 40.106666l0 5.12q0 40.106667-40.106667 40.106667l-517.12 0q-40.106667 0-40.106666-40.106667l0-5.12q0-40.106667 40.106666-40.106666Z" p-id="2683"></path><path d="M298.666667 256m40.106666 0l517.12 0q40.106667 0 40.106667 40.106667l0 5.12q0 40.106667-40.106667 40.106666l-517.12 0q-40.106667 0-40.106666-40.106666l0-5.12q0-40.106667 40.106666-40.106667Z" p-id="2684"></path></svg></i></button>
+                <ul class="mdui-menu" id="demo-attr-cascade">
+                
+                        <li class="mdui-menu-item">
+                          <a href="/" class="mdui-ripple">首页</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/archives" class="mdui-ripple">归档</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/tags" class="mdui-ripple">标签</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/post/about" class="mdui-ripple">关于</a>
+                        </li>
+                
+                        <li class="mdui-menu-item">
+                          <a href="/post/FriendLink" class="mdui-ripple">外链</a>
+                        </li>
+                
+                      </ul>
+
+
+        </header>
+        <div class="mdui-container post">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                         <article class="mdui-shadow-10 mdui-p-a-2 post-list">
+                           <div class="mdui-typo-display-1 mdui-m-b-3">flask blog</div>
+                           <a  class="index-list-biaoqian ">2021-10-08</a>
+                           <div class="mdui-typo mdui-m-t-3 post-neirong"><p>鄙人自学<code>python</code> 以来，完成的最完整的项目(自认为)，也算是值得纪念的事情(大概。</p>
+<!-- more -->
+<p>此项目只是自己对大佬的拙劣的模仿，烦请大神绕路。。</p>
+<p>项目地址: <a href="https://gitee.com/antianshi/my-flask-blog">https://gitee.com/antianshi/my-flask-blog</a></p>
+<h2 id="项目树">项目树</h2>
+<pre><code>.
+├── app
+│   ├── __init__.py
+│   ├── auth
+│   │   ├── __init__.py
+│   │   ├── forms.py
+│   │   └── views.py
+│   ├── main
+│   │   ├── __init__.py
+│   │   ├── forms.py
+│   │   └── views.py
+│   ├── models.py
+│   ├── static
+│   │   └── imgs
+│   │       └── default
+│   │           ├── carousels
+│   │           │   ├── 1.jpg
+│   │           │   ├── 2.jpg
+│   │           │   ├── 3.jpg
+│   │           │   └── 4.jpg
+│   │           ├── default.jpg
+│   │           ├── default_avatar.jpg
+│   │           ├── default_cover.jpg
+│   │           ├── login.jpg
+│   │           └── register.jpg
+│   ├── templates
+│   │   ├── about.html
+│   │   ├── article_page.html
+│   │   ├── articles.html
+│   │   ├── auth
+│   │   │   ├── login.html
+│   │   │   ├── register.html
+│   │   │   ├── reset_password.html
+│   │   │   └── reset_password_request.html
+│   │   ├── images.html
+│   │   ├── index.html
+│   │   ├── layout
+│   │   │   ├── base.html
+│   │   │   └── next_page.html
+│   │   ├── mail
+│   │   │   ├── change_email.html
+│   │   │   ├── delete_account.html
+│   │   │   ├── register.html
+│   │   │   └── reset_password.html
+│   │   ├── user
+│   │   │   ├── article.html
+│   │   │   ├── article_manager.html
+│   │   │   ├── article_manager_page.html
+│   │   │   ├── article_permission_request.html
+│   │   │   ├── change_email.html
+│   │   │   ├── change_password.html
+│   │   │   ├── delete_account.html
+│   │   │   ├── delete_account_request.html
+│   │   │   ├── index.html
+│   │   │   ├── layout
+│   │   │   │   └── left_sidebar.html
+│   │   │   ├── post.html
+│   │   │   ├── set.html
+│   │   │   └── upload_img.html
+│   │   └── user_page.html
+│   ├── tools.py
+│   └── user
+│       ├── __init__.py
+│       ├── forms.py
+│       └── views.py
+├── config.py
+├── manage.py
+└── requirements.txt
+</code></pre>
+<ul>
+<li><code>config.py</code> 配置文件。</li>
+<li><code>manage.py</code> 项目入口。</li>
+<li><code>requirements.txt</code> 项目依赖。</li>
+<li><code>app</code> 项目业务代码。</li>
+<li><code>app/__init__.py</code> app初始化文件。</li>
+<li><code>app/models.py</code> 表模型文件。</li>
+<li><code>app/tools.py</code> 项目工具包。</li>
+<li><code>app/static</code> 目录；静态文件。</li>
+<li><code>app/templates</code> 目录；模板文件。</li>
+<li><code>app/main</code> <code>app/auth</code> <code>app/user</code> 路由文件。</li>
+</ul>
+<h2 id="路由表">路由表</h2>
+<table>
+<thead>
+<tr>
+<th>url</th>
+<th>methods</th>
+<th>info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td><code>grt</code></td>
+<td>首页</td>
+</tr>
+<tr>
+<td><code>/articles</code></td>
+<td><code>get</code></td>
+<td>文章列表</td>
+</tr>
+<tr>
+<td><code>/images</code></td>
+<td><code>get</code></td>
+<td>图片列表</td>
+</tr>
+<tr>
+<td><code>/about</code></td>
+<td><code>get</code></td>
+<td>关于</td>
+</tr>
+<tr>
+<td><code>/article/&lt;int:uid&gt;/&lt;int:aid&gt;</code></td>
+<td><code>get</code></td>
+<td>文章单页<code> uid:用户id；aid:文章id</code></td>
+</tr>
+<tr>
+<td><code>/user_page/&lt;int:uid&gt;</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>用户单页 <code>uid:用户id</code></td>
+</tr>
+<tr>
+<td><code>/auth/login</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>登录</td>
+</tr>
+<tr>
+<td><code>/auth/register</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>注册</td>
+</tr>
+<tr>
+<td><code>/auth/logout</code></td>
+<td><code>get</code></td>
+<td>退出</td>
+</tr>
+<tr>
+<td><code>/auth/reset_password_request</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>找回密码邮件请求</td>
+</tr>
+<tr>
+<td><code>/auth/reset_password</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>密码重置</td>
+</tr>
+<tr>
+<td><code>/user</code></td>
+<td><code>get</code></td>
+<td>用户中心页</td>
+</tr>
+<tr>
+<td><code>/user/delete_account_request</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>账户注销请求页</td>
+</tr>
+<tr>
+<td><code>/user/delete_account</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>账户注销页</td>
+</tr>
+<tr>
+<td><code>/user/set</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>用户信息设置页</td>
+</tr>
+<tr>
+<td><code>/user/change_email</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>修改绑定邮箱</td>
+</tr>
+<tr>
+<td><code>/user/change_password</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>修改密码</td>
+</tr>
+<tr>
+<td><code>/user/post</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>发布动态</td>
+</tr>
+<tr>
+<td><code>/user/article_permission_request</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>写文权限不够，提权请求页</td>
+</tr>
+<tr>
+<td><code>/user/article</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>发布文章</td>
+</tr>
+<tr>
+<td><code>/user/article/manager</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>草稿管理列表</td>
+</tr>
+<tr>
+<td><code>/user/article/manager/&lt;int:aid&gt;</code></td>
+<td><code>get</code> <code>post</code></td>
+<td>草稿管理页</td>
+</tr>
+</tbody>
+</table>
+<h2 id="写在最后">写在最后</h2>
+<p>这是典型的<code>mvc</code> 架构的web项目，写到最后，发现一直是在前端部分卡壳，自认为最难的部分就是写模板的地方，没有一些前端基础，模板看都看不懂。。。</p>
+<p>因为鄙人是自学的编程，没有师傅带根基不扎实，特别是对数据库的操作，都是利用<code>orm</code>操作，对数据库理解太浅薄。。</p>
+<p>不说了，还是接着去学习一些前端知识吧。。。</p>
+<p>最后，不要叫我程序员，请叫我爱码士。。。。</p>
+</div>
+                              <div class="mdui-divider mdui-m-t-3"></div>
+                              <div class="mdui-row-xs-2 mdui-m-t-2">
+  <div class="mdui-col"> <div class="mdui-text-left"><a href="https://warm-2233.github.io/post/flex-bu-ju-dan-xing-bu-ju/">flex  布局-弹性布局</a></div></div>
+ <div class="mdui-col"><div class="mdui-text-right "><a href="https://warm-2233.github.io/post/python-lei-xing-zhu-jie/">python-类型注解</a></div> </div>
+                                </div>
+                                <div class="mdui-divider mdui-m-t-2"></div>
+   
+ <script src="https://warm-2233.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+                         </article>
+                 <div class="toc-container mdui-float-right">
+                   <style>.toc-container .markdownIt-TOC{display: none; top: 0px;}</style>
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E6%A0%91">项目树</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1%E8%A1%A8">路由表</a></li>
+<li><a href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E">写在最后</a></li>
+</ul>
+</li>
+</ul>
+
+                <script>
+                     $(window).scroll(function() {
+                      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                      if (scrollTop > 350){ $(".markdownIt-TOC")[0].style.display = "block" }else{  $(".markdownIt-TOC")[0].style.display = "none" }})
+                </script>
+              </div>
+
+                        </div>
+                 </div>
+          
+        </div>
+        <script data-no-instant>
+    (function ($) {
+        $.extend({
+            adamsOverload: function () {
+                $.viewImage({
+                    'target'  : '.post-neirong img',
+                    'exclude' : '.vsmile-icons img , .song-links-item img',
+                    'delay'   : 300
+                });
+            }
+        });
+    })(jQuery);
+    jQuery.adamsOverload();
+
+    let e = document.getElementsByTagName("video")
+                    for (let i=0; i<e.length; i++){
+                      e[i].style.width = "100%"
+                      e[i].controls = true
+                    }
+</script>
+        <footer class="footer mdui-m-t-5 mdui-text-center">
+               <nav class="social-links">
+                      <ul>
+                      
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-rss"></i></a></li>
+                         
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="https://github.com/" target="_blank"><i class="iconfont icon-github"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="https://www.zhihu.com/" target="_blank"><i class="iconfont icon-zhihu"></i></a></li>
+                         
+                           
+                            
+                           
+                            
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-douban"></i></a></li>
+                         
+                           
+                            
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-qq"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="#" target="_blank"><i class="iconfont icon-weibo"></i></a></li>
+                         
+                           
+                            	
+                        <li class="social-link"><a href="https://www.bilibili.com/" target="_blank"><i class="iconfont icon-youtube"></i></a></li>
+                         
+                           
+                      </ul>
+                    </nav>
+                  <div class="copyright">
+                      <p><h4>邪王暗焰 の 博客</h4>
+<p>莫要低估自己的能力，莫要高估自己的毅力</p>
+静态博客由 <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> 构建，站点主题为 <a href="https://github.com/shanbufun/gridea-theme-jia" target="_blank">jia</a> 并在其基础上修改</p>
+                  </div>
+                  
+              </footer>
+    </body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阅览室</title>
+    <script src="main.js"></script>
+</head>
+<body style="padding: 10px 10px;">
+    <h1>阅览室查询</h1>
+    <label for="a1"><input id="a1" type="radio" name="a" value="bz">报纸查询</label>  <br>
+    <label for="a2"><input id="a2" type="radio" name="a" value="qk">期刊查询</label> <br>
+
+    <input type="text" id="value"><label for="a3"><input id="a3" type="checkbox" name="b" value="fx">反向</label> <br>
+    <input type="button" value="查询" onclick="btn()">
+
+    <script>
+        function flag_fx(){
+            let a = document.getElementById("a3")
+            return a.checked
+        }
+        function flag(){
+            let f = null
+            fs = document.getElementsByName("a")
+            for (let i=0;i<fs.length;i++){
+                if (fs[i].checked){
+                    // console.log(fs[i].checked, fs[i].value, i);
+                    f = fs[i].value
+                }
+            }
+            // console.log(f);
+            return f
+        }
+
+        function bz(value){
+            // value = value.replace(/\s*/g,"")
+            let c = ""
+            for (let k in newspaper){
+                newspaper[k].forEach(function(v,i){
+                    if (v.indexOf(value)!=-1){
+                        // console.log(v,"在第",k,"个架子上");
+                        v = v.replace(value, `<span style="color:red">${value}</span>`)
+                        v = "<span style='color:#CC6633'>"+v+"</span>"
+                        k = "<span style='color:#CC6633'>"+k+"</span>"
+                        c+=`<p>《${v}》在第${k}个架子上</p>`
+                    }
+                })
+            }
+            if (c == "") {
+                c = "没有找到"
+            }
+            return c
+        }
+        function bz_fx(value){
+            let c = ""
+            if (newspaper[value]){
+                let v = value
+                v = "<span style='color:#CC6633'>"+v+"</span>"
+                c = "<p>第"+v+"个架子上有报纸：</p>"
+                for (let i=0;i<newspaper[value].length; i++){
+                    c+=" <p>《"+newspaper[value][i]+"》</p>"
+                }
+
+            }else{
+                if (value == "收藏"||value=="sc"){
+                    c = "<p>需要收藏的报纸有：</p>"
+                    for (let i=0;i<newspaper_collected.length;i++){
+                        c+="<p>《"+newspaper_collected[i]+"》</p>"
+                    }
+                }
+            }
+            if (c==""){
+                c = "没有找到"
+            }
+            return c
+        }
+
+        function rack(n){
+            let c = ""
+            for (let k in bookrack){
+                if (bookrack[k].min <= n && n <= bookrack[k].max){
+                    // console.log(k);
+                    let f = "前"
+                    if ((bookrack[k].min+63)<n){
+                        f = "后"
+                    }
+                    k = "<span style='color:#CC6633'>"+k+"</span>"
+                    f = "<span style='color:#CC4563'>"+f+"</span>"
+                    c+=`可能在第${k}个书架上的${f}半部分`
+                }
+            }
+
+            return c
+        }
+        function book(value){
+            let c = ""
+            bookrack
+            for (let i=0; i<books.length; i++){
+                if (books[i][0].indexOf(value) != -1){
+                    // console.log(books[i]);
+                    let v = books[i][0]
+                    v = v.replace(value, `<span style="color:red">${value}</span>`)
+                    v = "<span style='color:#CC6633'>"+v+"</span>"
+                    let k = books[i][1]
+                    k = "<span style='color:#CC6633'>"+k+"</span>"
+                    let f = classify[books[i][2]]
+
+                    let r = rack(books[i][1])
+                    // console.log(r);
+                    let p = get_storey(books[i][1])
+                    c+=`<p>期刊《${v}》，编号是: ${k} <br />分类是: <${f}> | ${r}的${p}</p>`
+                }
+            }
+            if (c == "") {
+                c = "没有找到"
+            }
+            return c
+        }
+
+        function book_fx(value){
+            let c = ""
+            if (isNaN(value)){
+                // ABCDEF
+                value = value.toUpperCase()
+                if (!classify[value]){
+                    c = "<p> <span style='color:red'>"+value+"</span> 查无此项</p>"
+                    return c
+                }
+                c = "<p> <span style='color:red'>"+value+"</span> 类为\
+                     <span style='color:#666'>"+classify[value]+"</span> 有期刊：</p>"
+                for (let i=0; i<books.length; i++){
+                    if (books[i][2] == value){
+                        let p = books[i][0]
+                        p = "<span style='color:#CC6633'>"+p+"</span>"
+                        let k = "<span style='weight:700;color:#454545'>"+books[i][1]+"</span>"
+                        c+= "<p>《"+p+"》编号是: "+k+"</p>"
+                    }
+                }
+
+            }else{
+                // 123456
+                if (!bookrack[value]){
+                    // c = "隐约记得只有 5 个书架"
+                    c = "输入的数字有点太大了"
+                    return c
+                }
+                c = "<p>第 <span style='color:red'>"+value+"</span> 个架子上有期刊: </p>"
+                let min = bookrack[value].min
+                let max = bookrack[value].max
+                for (min; min<=max; min++){
+                    for (let i=1; i<books.length;i++){
+                        if (books[i][1] == min){
+                            let p = books[i][0]
+                            p = "<span style='color:#CC6633'>"+p+"</span>"
+                            let k = "<span style='weight:700;color:#454545'>"+books[i][1]+"</span>"
+                            c+= "<p>《"+p+"》编号是: "+k+"</p>"
+                            // if ((max/2)<min){}
+                        }
+                    }
+                }
+
+            }
+            return c
+        }
+
+        function get_storey(n){
+            let c = ""
+            n = n % 16
+            for(let k in storey){
+                if (storey[k].indexOf(n)!= -1){
+                    c = "<span style='color:red'>第"+k+"</span>排"
+                }
+            }
+            return c
+        }
+        
+        function btn(){
+            let v = document.getElementById("value");
+            let t = document.getElementById("text");
+            let value = v.value 
+            let f = flag()
+
+            if (!f){
+                t.innerHTML = "你应该先选择一个"
+                return
+            }
+            if (value.replace(/\s*/g,"") == ""){
+                t.innerHTML = "搜索内容不能为空"
+                return
+            }
+
+            if (!flag_fx()){
+                if (f == "bz"){
+                    let c = bz(value)
+                    t.innerHTML = c
+                }else{
+                    let c = book(value)
+                    t.innerHTML = c
+                }
+                v.value = ""
+            }else{
+                if (f == "bz"){
+                    let c = bz_fx(value)
+                    t.innerHTML = c
+                }else{
+                    let c = book_fx(value)
+                    t.innerHTML = c
+                }
+                v.value = ""
+            }
+        }
+    </script>
+    <hr>
+    <div id="text">
+    </div>
+
+</body>
+</html>

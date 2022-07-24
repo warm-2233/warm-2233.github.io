@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://warm-2233.github.io</id>
+    <title>暗天使</title>
+    <updated>2022-07-24T09:07:22.489Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://warm-2233.github.io"/>
+    <link rel="self" href="https://warm-2233.github.io/atom.xml"/>
+    <subtitle>学习时的痛苦是暂时的 未学到的痛苦是终生的</subtitle>
+    <logo>https://warm-2233.github.io/images/avatar.png</logo>
+    <icon>https://warm-2233.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, 暗天使</rights>
+    <entry>
+        <title type="html"><![CDATA[批量导入通讯录 make_vcard]]></title>
+        <id>https://warm-2233.github.io/post/pi-liang-dao-ru-tong-xun-lu-make_vcard/</id>
+        <link href="https://warm-2233.github.io/post/pi-liang-dao-ru-tong-xun-lu-make_vcard/">
+        </link>
+        <updated>2022-03-25T12:16:46.000Z</updated>
+        <summary type="html"><![CDATA[<p>这是鄙人使用<code>python</code>写的命令行程序，其功能是生成<code>.vcf</code>通讯录导入文件。现已发布至<code>pypi</code>。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这是鄙人使用<code>python</code>写的命令行程序，其功能是生成<code>.vcf</code>通讯录导入文件。现已发布至<code>pypi</code>。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[flex  布局-弹性布局]]></title>
+        <id>https://warm-2233.github.io/post/flex-bu-ju-dan-xing-bu-ju/</id>
+        <link href="https://warm-2233.github.io/post/flex-bu-ju-dan-xing-bu-ju/">
+        </link>
+        <updated>2021-10-15T10:56:40.000Z</updated>
+        <summary type="html"><![CDATA[<p>flex  布局-弹性布局</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>flex  布局-弹性布局</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[flask blog]]></title>
+        <id>https://warm-2233.github.io/post/flask-blog/</id>
+        <link href="https://warm-2233.github.io/post/flask-blog/">
+        </link>
+        <updated>2021-10-08T04:10:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>鄙人自学<code>python</code> 以来，完成的最完整的项目(自认为)，也算是值得纪念的事情(大概。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>鄙人自学<code>python</code> 以来，完成的最完整的项目(自认为)，也算是值得纪念的事情(大概。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python-类型注解]]></title>
+        <id>https://warm-2233.github.io/post/python-lei-xing-zhu-jie/</id>
+        <link href="https://warm-2233.github.io/post/python-lei-xing-zhu-jie/">
+        </link>
+        <updated>2021-09-04T09:12:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>python 是动态语言，变量随时可以被赋值，且能赋值为不同类型，python 不是静态编译型语言，变量类型是在运行器决定的，动态语言很灵活，但是这种特性也是弊端，由于不做任何类型检查，直到运行期问题才显现出来，或者线上运行时才能暴露出问题。函数的使用者看到函数的时候，并不知道你的函数的设计，并不知道应该传入什么类型数据。IDE 也难以提示。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>python 是动态语言，变量随时可以被赋值，且能赋值为不同类型，python 不是静态编译型语言，变量类型是在运行器决定的，动态语言很灵活，但是这种特性也是弊端，由于不做任何类型检查，直到运行期问题才显现出来，或者线上运行时才能暴露出问题。函数的使用者看到函数的时候，并不知道你的函数的设计，并不知道应该传入什么类型数据。IDE 也难以提示。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python 元类]]></title>
+        <id>https://warm-2233.github.io/post/python-yuan-lei/</id>
+        <link href="https://warm-2233.github.io/post/python-yuan-lei/">
+        </link>
+        <updated>2021-09-01T02:44:40.000Z</updated>
+        <summary type="html"><![CDATA[<p>众所周知 对象 是由 类 创建的，那么 类 又是创建的呢？</p>
+<p>在<strong>默认</strong>情况下，类是由<code>type</code> 创建的。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>众所周知 对象 是由 类 创建的，那么 类 又是创建的呢？</p>
+<p>在<strong>默认</strong>情况下，类是由<code>type</code> 创建的。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Ipython ]]></title>
+        <id>https://warm-2233.github.io/post/ipython/</id>
+        <link href="https://warm-2233.github.io/post/ipython/">
+        </link>
+        <updated>2021-08-21T06:14:00.000Z</updated>
+        <summary type="html"><![CDATA[<p><code>ipython</code>是一个<code>python</code>的交互式<code>shell</code>，比默认的<code>python shell</code>好用得多，支持变量自动补全，自动缩进，支持<code>bash shell</code>命令，内置了许多很有用的功能和函数。学习<code>ipython</code>将会让我们以一种更高的效率来使用<code>python</code>。同时它也是利用Python进行科学计算和交互可视化的一个最佳的平台。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p><code>ipython</code>是一个<code>python</code>的交互式<code>shell</code>，比默认的<code>python shell</code>好用得多，支持变量自动补全，自动缩进，支持<code>bash shell</code>命令，内置了许多很有用的功能和函数。学习<code>ipython</code>将会让我们以一种更高的效率来使用<code>python</code>。同时它也是利用Python进行科学计算和交互可视化的一个最佳的平台。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python 反射]]></title>
+        <id>https://warm-2233.github.io/post/python-fan-she/</id>
+        <link href="https://warm-2233.github.io/post/python-fan-she/">
+        </link>
+        <updated>2021-08-20T23:35:57.000Z</updated>
+        <summary type="html"><![CDATA[<p>在做程序开发中，我们常常会遇到这样的需求：需要执行对象里的某个方法，或需要调用对象中的某个变量，但是由于种种原因我们无法确定这个方法或变量是否存在，这是我们需要用一个特殊的方法或机制要访问和操作这个未知的方法或变量，这中机制就称之为<strong>反射</strong>。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在做程序开发中，我们常常会遇到这样的需求：需要执行对象里的某个方法，或需要调用对象中的某个变量，但是由于种种原因我们无法确定这个方法或变量是否存在，这是我们需要用一个特殊的方法或机制要访问和操作这个未知的方法或变量，这中机制就称之为<strong>反射</strong>。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python 多进程]]></title>
+        <id>https://warm-2233.github.io/post/python-duo-jin-cheng/</id>
+        <link href="https://warm-2233.github.io/post/python-duo-jin-cheng/">
+        </link>
+        <updated>2021-04-15T03:33:04.000Z</updated>
+        <summary type="html"><![CDATA[<p>进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行<strong>资源分配和调</strong>度的基本单位，是操作系统结构的基础。进程是线程的容器。程序是指令、数据及其组织形式的描述，进程是程序的实体。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行<strong>资源分配和调</strong>度的基本单位，是操作系统结构的基础。进程是线程的容器。程序是指令、数据及其组织形式的描述，进程是程序的实体。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[node js]]></title>
+        <id>https://warm-2233.github.io/post/node-js/</id>
+        <link href="https://warm-2233.github.io/post/node-js/">
+        </link>
+        <updated>2021-04-07T06:27:43.000Z</updated>
+        <summary type="html"><![CDATA[<p><em>Node</em>.<em>js</em> 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。即在服务器上也能使用 js 而不只是在游览器。</p>
+<p><em>可以用</em> JavaScript 来写的应用,<em>最终都会</em>用 JavaScript 来写 。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p><em>Node</em>.<em>js</em> 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。即在服务器上也能使用 js 而不只是在游览器。</p>
+<p><em>可以用</em> JavaScript 来写的应用,<em>最终都会</em>用 JavaScript 来写 。</p>
+]]></content>
+    </entry>
+</feed>
